@@ -1,0 +1,8 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <!-- Party cone -->
+  <path d="M18 46 30 18l16 16-28 12Z" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Cone detail -->
+  <path d="m25 30 9 9" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+  <!-- Celebration lines -->
+  <path d="m38 17 4-7M46 23l8-3M51 32l8 3" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+</svg>
