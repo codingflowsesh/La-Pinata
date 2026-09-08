@@ -29,7 +29,6 @@
         </ul>
 
         <a class="site-nav__cta" href="https://docs.google.com/forms/d/e/1FAIpQLScoLGHIJ-0zX6YgYY72aCu_DUFqIfNjaMrX1rQ_hbqM1XWntA/viewform" target="_blank" rel="noopener noreferrer">
-          <span class="site-nav__cta-sparkle" aria-hidden="true"></span>
           Get My Custom Quote
         </a>
 
@@ -47,27 +46,32 @@
       <div class="site-nav__mobile-panel" id="mobile-navigation" hidden>
         <a class="site-nav__mobile-link" href="#home" aria-current="page">Home</a>
         <a class="site-nav__mobile-link" href="#our-pinatas">Our Piñatas</a>
-        <a class="site-nav__mobile-link" href="#custom-orders">Custom Orders</a>
         <a class="site-nav__mobile-link" href="#about">About Us</a>
         <a class="site-nav__mobile-link" href="#contact">Contact</a>
         <a class="site-nav__mobile-cta" href="https://docs.google.com/forms/d/e/1FAIpQLScoLGHIJ-0zX6YgYY72aCu_DUFqIfNjaMrX1rQ_hbqM1XWntA/viewform" target="_blank" rel="noopener noreferrer">
-          <span class="site-nav__cta-sparkle" aria-hidden="true"></span>
           Get My Custom Quote
         </a>
       </div>
+      <div class="site-nav__mobile-backdrop" aria-hidden="true" hidden></div>
     </div>
   </header>
 
   <main>
     <section class="hero" id="home" aria-labelledby="hero-title">
-      <div class="hero__mobile-confetti" aria-hidden="true">
-        <span class="hero__mobile-confetti-piece hero__mobile-confetti-piece--one"></span>
-        <span class="hero__mobile-confetti-piece hero__mobile-confetti-piece--two"></span>
-        <span class="hero__mobile-confetti-piece hero__mobile-confetti-piece--three"></span>
-        <span class="hero__mobile-confetti-piece hero__mobile-confetti-piece--four"></span>
-        <span class="hero__mobile-confetti-piece hero__mobile-confetti-piece--five"></span>
-        <span class="hero__mobile-confetti-piece hero__mobile-confetti-piece--six"></span>
-        <span class="hero__mobile-confetti-piece hero__mobile-confetti-piece--seven"></span>
+      <div class="section-confetti section-confetti--hero" aria-hidden="true">
+        <img class="section-confetti__piece hero-confetti__pill-large section-confetti__piece--tablet-extra" src="assets/images/confetti/pill.svg" alt="" aria-hidden="true">
+        <img class="section-confetti__piece hero-confetti__dot-left" src="assets/images/confetti/dot.svg" alt="" aria-hidden="true">
+        <img class="section-confetti__piece hero-confetti__streamer-left" src="assets/images/confetti/streamer.svg" alt="" aria-hidden="true">
+        <img class="section-confetti__piece hero-confetti__diamond-lower-left" src="assets/images/confetti/sparkle-diamond.svg" alt="" aria-hidden="true">
+        <img class="section-confetti__piece hero-confetti__star-lower-left" src="assets/images/confetti/party-crown.svg" alt="" aria-hidden="true">
+        <img class="section-confetti__piece hero-confetti__dot-center section-confetti__piece--desktop-extra" src="assets/images/confetti/dot.svg" alt="" aria-hidden="true">
+        <img class="section-confetti__piece hero-confetti__diamond-center section-confetti__piece--desktop-extra" src="assets/images/confetti/sparkle-diamond.svg" alt="" aria-hidden="true">
+        <img class="section-confetti__piece hero-confetti__pill-center section-confetti__piece--desktop-extra" src="assets/images/confetti/pill.svg" alt="" aria-hidden="true">
+        <img class="section-confetti__piece hero-confetti__star-top-right" src="assets/images/confetti/party-crown.svg" alt="" aria-hidden="true">
+        <img class="section-confetti__piece hero-confetti__sparkle-right section-confetti__piece--desktop-extra" src="assets/images/confetti/sparkle-4.svg" alt="" aria-hidden="true">
+        <img class="section-confetti__piece hero-confetti__loop-right" src="assets/images/confetti/looped-streamer.svg" alt="" aria-hidden="true">
+        <img class="section-confetti__piece hero-confetti__dot-right section-confetti__piece--tablet-extra" src="assets/images/confetti/dot.svg" alt="" aria-hidden="true">
+        <img class="section-confetti__piece hero-confetti__pill-lower-right" src="assets/images/confetti/pill.svg" alt="" aria-hidden="true">
       </div>
       <div class="container hero__layout">
         <div class="hero__copy">
@@ -86,13 +90,11 @@
             Luxury custom piñatas handcrafted for unforgettable celebrations.
           </p>
           <p class="hero__location">
-            <span class="hero__heart" aria-hidden="true"></span>
             Serving Los Angeles with pickup, delivery and select shipping.
           </p>
 
           <div class="hero__actions">
             <a class="hero__button hero__button--primary" href="https://docs.google.com/forms/d/e/1FAIpQLScoLGHIJ-0zX6YgYY72aCu_DUFqIfNjaMrX1rQ_hbqM1XWntA/viewform" target="_blank" rel="noopener noreferrer">
-              <span class="hero__sparkle" aria-hidden="true"></span>
               Get My Custom Quote
             </a>
             <a class="hero__button hero__button--secondary" href="#gallery">
@@ -102,6 +104,7 @@
           </div>
 
           <p class="hero__support">No payment required • Custom quote</p>
+
         </div>
 
         <div class="hero__visual">
@@ -130,6 +133,7 @@
         <div class="collections__grid">
           <a class="collections__card collections__card--characters" href="#gallery">
             <span class="collections__card-title">Characters</span>
+            <img class="collections__card-confetti collections__card-confetti--characters" src="assets/images/confetti/sparkle-4.svg" alt="" aria-hidden="true">
             <img
               class="collections__card-image collections__card-image--character"
               src="assets/images/trans-img/blue-fish.webp"
@@ -139,6 +143,7 @@
 
           <a class="collections__card collections__card--birthdays" href="#gallery">
             <span class="collections__card-title">Birthdays</span>
+            <img class="collections__card-confetti collections__card-confetti--birthdays section-confetti__piece--tablet-extra" src="assets/images/confetti/squiggle.svg" alt="" aria-hidden="true">
             <picture class="collections__card-picture">
               <source media="(max-width: 600px)" srcset="assets/images/trans-img/lorenzo-1.webp">
               <img
@@ -151,6 +156,7 @@
 
           <a class="collections__card collections__card--numbers" href="#gallery">
             <span class="collections__card-title">Numbers &amp; Letters</span>
+            <img class="collections__card-confetti collections__card-confetti--numbers" src="assets/images/confetti/sparkle-diamond.svg" alt="" aria-hidden="true">
             <picture class="collections__card-picture">
               <source media="(max-width: 600px)" srcset="assets/images/trans-img/cow.webp">
               <img
@@ -163,6 +169,7 @@
 
           <a class="collections__card collections__card--events" href="#gallery">
             <span class="collections__card-title">Special Events</span>
+            <img class="collections__card-confetti collections__card-confetti--events section-confetti__piece--tablet-extra" src="assets/images/confetti/pill.svg" alt="" aria-hidden="true">
             <img
               class="collections__card-image collections__card-image--event"
               src="assets/images/trans-img/party-guy.webp"
@@ -175,6 +182,16 @@
     </section>
 
     <section class="process" id="custom-orders" aria-labelledby="process-title">
+      <div class="section-confetti section-confetti--process" aria-hidden="true">
+        <img class="section-confetti__piece process-confetti__dot-left" src="assets/images/confetti/dot.svg" alt="" aria-hidden="true">
+        <img class="section-confetti__piece process-confetti__curve-left" src="assets/images/confetti/curved-pill.svg" alt="" aria-hidden="true">
+        <img class="section-confetti__piece process-confetti__star-left" src="assets/images/confetti/sparkle-4.svg" alt="" aria-hidden="true">
+        <img class="section-confetti__piece process-confetti__diamond-left section-confetti__piece--desktop-extra" src="assets/images/confetti/sparkle-diamond.svg" alt="" aria-hidden="true">
+        <img class="section-confetti__piece process-confetti__dot-right" src="assets/images/confetti/dot.svg" alt="" aria-hidden="true">
+        <img class="section-confetti__piece process-confetti__pill-right" src="assets/images/confetti/pill.svg" alt="" aria-hidden="true">
+        <img class="section-confetti__piece process-confetti__star-right" src="assets/images/confetti/sparkle-4.svg" alt="" aria-hidden="true">
+        <img class="section-confetti__piece process-confetti__squiggle-bottom section-confetti__piece--desktop-extra" src="assets/images/confetti/squiggle.svg" alt="" aria-hidden="true">
+      </div>
       <div class="container">
         <div class="process__heading">
           <img class="process__sparkle process__sparkle--left" src="assets/images/icons/confetti/sparkle.svg" alt="" aria-hidden="true">
@@ -226,6 +243,17 @@
     </section>
 
     <section class="gallery-showcase" id="gallery" aria-labelledby="gallery-showcase-title">
+      <div class="section-confetti section-confetti--gallery" aria-hidden="true">
+        <img class="section-confetti__piece gallery-confetti__star-left" src="assets/images/confetti/party-crown.svg" alt="" aria-hidden="true">
+        <img class="section-confetti__piece gallery-confetti__loop-left" src="assets/images/confetti/looped-streamer.svg" alt="" aria-hidden="true">
+        <img class="section-confetti__piece gallery-confetti__diamond-left" src="assets/images/confetti/sparkle-diamond.svg" alt="" aria-hidden="true">
+        <img class="section-confetti__piece gallery-confetti__dot-left section-confetti__piece--desktop-extra" src="assets/images/confetti/dot.svg" alt="" aria-hidden="true">
+        <img class="section-confetti__piece gallery-confetti__star-right" src="assets/images/confetti/party-crown.svg" alt="" aria-hidden="true">
+        <img class="section-confetti__piece gallery-confetti__loop-right" src="assets/images/confetti/looped-streamer.svg" alt="" aria-hidden="true">
+        <img class="section-confetti__piece gallery-confetti__dot-right" src="assets/images/confetti/dot.svg" alt="" aria-hidden="true">
+        <img class="section-confetti__piece gallery-confetti__pill-right" src="assets/images/confetti/curved-pill.svg" alt="" aria-hidden="true">
+        <img class="section-confetti__piece gallery-confetti__sparkle-lower section-confetti__piece--desktop-extra" src="assets/images/confetti/sparkle-4.svg" alt="" aria-hidden="true">
+      </div>
       <div class="container">
         <div class="gallery-showcase__heading">
           <img class="gallery-showcase__sparkle gallery-showcase__sparkle--left" src="assets/images/icons/confetti/sparkle.svg" alt="" aria-hidden="true">
@@ -235,23 +263,17 @@
           <img class="gallery-showcase__sparkle gallery-showcase__sparkle--right-small" src="assets/images/icons/confetti/sparkle.svg" alt="" aria-hidden="true">
         </div>
 
-        <div class="gallery-showcase__grid">
-          <article class="gallery-showcase__card gallery-showcase__card--pink">
-            <img src="assets/images/trans-img/caterpillar-1.webp" alt="Caterpillar custom piñata">
-          </article>
+        <div class="gallery-showcase__carousel">
+          <div class="gallery-showcase__grid" aria-label="Piñata projects"></div>
 
-          <article class="gallery-showcase__card gallery-showcase__card--lavender">
-            <img src="assets/images/trans-img/jasmine-m.webp" alt="Jasmine letter piñata">
-          </article>
-
-          <article class="gallery-showcase__card gallery-showcase__card--mint">
-            <img src="assets/images/trans-img/brown-bull.webp" alt="Brown bull custom piñata">
-          </article>
-
-          <article class="gallery-showcase__card gallery-showcase__card--yellow">
-            <img src="assets/images/trans-img/cookie-monster.webp" alt="Cookie Monster custom piñata">
-          </article>
+          <div class="gallery-showcase__carousel-controls" aria-label="Gallery navigation">
+            <button class="gallery-showcase__carousel-control gallery-showcase__carousel-control--previous" type="button" aria-label="Previous gallery item"><span class="gallery-nav-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M7.2 4.45c-1.72-1.04-3.7.19-3.7 2.2v10.7c0 2.01 1.98 3.24 3.7 2.2l10.18-6.12c1.68-1.01 1.68-3.43 0-4.44L7.2 4.45Z"></path></svg></span></button>
+            <button class="gallery-showcase__carousel-control gallery-showcase__carousel-control--next" type="button" aria-label="Next gallery item"><span class="gallery-nav-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M7.2 4.45c-1.72-1.04-3.7.19-3.7 2.2v10.7c0 2.01 1.98 3.24 3.7 2.2l10.18-6.12c1.68-1.01 1.68-3.43 0-4.44L7.2 4.45Z"></path></svg></span></button>
+          </div>
         </div>
+
+        <div class="gallery-showcase__pagination" aria-hidden="true"></div>
+        <p class="gallery-showcase__status" aria-live="polite"></p>
 
         <p class="gallery-showcase__prompt">
           <span class="gallery-showcase__prompt-marks gallery-showcase__prompt-marks--left" aria-hidden="true"><i></i><i></i><i></i></span>
@@ -273,12 +295,32 @@
       </div>
     </section>
 
+    <div class="mobile-gallery-modal" id="mobile-gallery-modal" role="dialog" aria-modal="true" aria-label="Piñata gallery" hidden>
+      <div class="mobile-gallery-modal__dialog">
+        <button class="mobile-gallery-modal__close" type="button" aria-label="Close gallery">&times;</button>
+        <h3 class="mobile-gallery-modal__title" id="mobile-gallery-modal-title"></h3>
+        <button class="mobile-gallery-modal__nav mobile-gallery-modal__nav--previous" type="button" aria-label="Previous media"><span class="gallery-nav-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M7.2 4.45c-1.72-1.04-3.7.19-3.7 2.2v10.7c0 2.01 1.98 3.24 3.7 2.2l10.18-6.12c1.68-1.01 1.68-3.43 0-4.44L7.2 4.45Z"></path></svg></span></button>
+        <div class="mobile-gallery-modal__track"></div>
+        <button class="mobile-gallery-modal__nav mobile-gallery-modal__nav--next" type="button" aria-label="Next media"><span class="gallery-nav-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M7.2 4.45c-1.72-1.04-3.7.19-3.7 2.2v10.7c0 2.01 1.98 3.24 3.7 2.2l10.18-6.12c1.68-1.01 1.68-3.43 0-4.44L7.2 4.45Z"></path></svg></span></button>
+        <div class="mobile-gallery-modal__pagination" aria-hidden="true"></div>
+        <p class="mobile-gallery-modal__status" aria-live="polite"></p>
+        <p class="mobile-gallery-modal__hint">Swipe to see this piñata’s photos and videos</p>
+      </div>
+    </div>
+
     <section class="size-reference" id="size-guide" aria-labelledby="size-reference-title">
+      <div class="section-confetti section-confetti--size" aria-hidden="true">
+        <img class="section-confetti__piece size-confetti__star" src="assets/images/confetti/party-crown.svg" alt="" aria-hidden="true">
+        <img class="section-confetti__piece size-confetti__dot" src="assets/images/confetti/dot.svg" alt="" aria-hidden="true">
+        <img class="section-confetti__piece size-confetti__sparkle" src="assets/images/confetti/sparkle-4.svg" alt="" aria-hidden="true">
+        <img class="section-confetti__piece size-confetti__diamond" src="assets/images/confetti/sparkle-diamond.svg" alt="" aria-hidden="true">
+        <img class="section-confetti__piece size-confetti__pill section-confetti__piece--desktop-extra" src="assets/images/confetti/pill.svg" alt="" aria-hidden="true">
+      </div>
       <div class="container">
         <div class="size-reference__surface">
           <div class="size-reference__content">
             <div class="size-reference__details">
-              <h2 class="size-reference__title" id="size-reference-title">Find Your Perfect Size</h2>
+              <h2 class="size-reference__title" id="size-reference-title"><span>Find Your</span> <span>Perfect Size</span></h2>
 
               <dl class="size-reference__measurements">
                 <div class="size-reference__measurement">
@@ -295,7 +337,6 @@
                 </div>
               </dl>
 
-              <a class="size-reference__button" href="https://docs.google.com/forms/d/e/1FAIpQLScoLGHIJ-0zX6YgYY72aCu_DUFqIfNjaMrX1rQ_hbqM1XWntA/viewform" target="_blank" rel="noopener noreferrer">Get My Custom Quote</a>
             </div>
 
             <div class="size-reference__chart">
@@ -309,12 +350,15 @@
     <section class="mission" id="about" aria-labelledby="mission-title">
       <div class="container">
         <div class="mission__surface">
-          <img class="mission__confetti mission__confetti--sparkle" src="assets/images/icons/confetti/sparkle.svg" alt="" aria-hidden="true">
-          <img class="mission__confetti mission__confetti--heart" src="assets/images/icons/confetti/heart.svg" alt="" aria-hidden="true">
-          <img class="mission__confetti mission__confetti--square" src="assets/images/icons/confetti/square.svg" alt="" aria-hidden="true">
-          <img class="mission__confetti mission__confetti--streamer" src="assets/images/icons/confetti/streamer-2.svg" alt="" aria-hidden="true">
-          <img class="mission__confetti mission__confetti--squiggle" src="assets/images/icons/confetti/squiggle.svg" alt="" aria-hidden="true">
-
+          <div class="section-confetti section-confetti--mission" aria-hidden="true">
+            <img class="section-confetti__piece mission-confetti__heart" src="assets/images/confetti/heart.svg" alt="" aria-hidden="true">
+            <img class="section-confetti__piece mission-confetti__sparkle" src="assets/images/confetti/sparkle-4.svg" alt="" aria-hidden="true">
+            <img class="section-confetti__piece mission-confetti__pill" src="assets/images/confetti/pill.svg" alt="" aria-hidden="true">
+            <img class="section-confetti__piece mission-confetti__dot" src="assets/images/confetti/dot.svg" alt="" aria-hidden="true">
+            <img class="section-confetti__piece mission-confetti__loop" src="assets/images/confetti/looped-streamer.svg" alt="" aria-hidden="true">
+            <img class="section-confetti__piece mission-confetti__star" src="assets/images/confetti/party-crown.svg" alt="" aria-hidden="true">
+            <img class="section-confetti__piece mission-confetti__diamond section-confetti__piece--desktop-extra" src="assets/images/confetti/sparkle-diamond.svg" alt="" aria-hidden="true">
+          </div>
           <div class="mission__content">
             <img class="mission__logo" src="assets/images/logo/circle-logo.png" alt="L.A. Piñatas logo">
             <h2 class="mission__title" id="mission-title">Our Mission</h2>
@@ -327,7 +371,6 @@
 
             <div class="mission__copy">
               <p>At L.A. Piñatas, we are dedicated to preserving and celebrating Mexican cultural traditions through the art of custom piñata-making. In a world where traditions can fade with time and distance, we strive to keep our heritage vibrant and alive.</p>
-              <span class="mission__copy-sparkle" aria-hidden="true"></span>
               <p>Every piñata we create is a tribute to our roots—handcrafted with love, culture, and purpose—to bring joy, connection, and authenticity to all of life’s special occasions. Our mission is to honor the past, celebrate the present, and inspire future generations through the beauty of tradition.</p>
             </div>
 
@@ -340,11 +383,16 @@
     <section class="closing-cta" id="contact" aria-labelledby="closing-cta-title">
       <div class="container">
         <div class="closing-cta__surface">
-          <img class="closing-cta__confetti closing-cta__confetti--sparkle" src="assets/images/icons/confetti/sparkle.svg" alt="" aria-hidden="true">
-          <img class="closing-cta__confetti closing-cta__confetti--square" src="assets/images/icons/confetti/square.svg" alt="" aria-hidden="true">
-          <img class="closing-cta__confetti closing-cta__confetti--streamer" src="assets/images/icons/confetti/streamer-3.svg" alt="" aria-hidden="true">
-          <img class="closing-cta__confetti closing-cta__confetti--squiggle" src="assets/images/icons/confetti/squiggle-2.svg" alt="" aria-hidden="true">
-
+          <div class="section-confetti section-confetti--closing" aria-hidden="true">
+            <img class="section-confetti__piece closing-confetti__loop-left" src="assets/images/confetti/looped-streamer.svg" alt="" aria-hidden="true">
+            <img class="section-confetti__piece closing-confetti__streamer-left" src="assets/images/confetti/streamer.svg" alt="" aria-hidden="true">
+            <img class="section-confetti__piece closing-confetti__sparkle-left" src="assets/images/confetti/sparkle-4.svg" alt="" aria-hidden="true">
+            <img class="section-confetti__piece closing-confetti__diamond-left" src="assets/images/confetti/sparkle-diamond.svg" alt="" aria-hidden="true">
+            <img class="section-confetti__piece closing-confetti__star-right" src="assets/images/confetti/party-crown.svg" alt="" aria-hidden="true">
+            <img class="section-confetti__piece closing-confetti__pill-right" src="assets/images/confetti/pill.svg" alt="" aria-hidden="true">
+            <img class="section-confetti__piece closing-confetti__dot-right" src="assets/images/confetti/dot.svg" alt="" aria-hidden="true">
+            <img class="section-confetti__piece closing-confetti__diamond-right section-confetti__piece--desktop-extra" src="assets/images/confetti/sparkle-diamond.svg" alt="" aria-hidden="true">
+          </div>
           <div class="closing-cta__visual">
             <img class="closing-cta__star" src="assets/images/trans-img/pink-star-footer.webp" alt="Pink star piñata">
           </div>
@@ -356,7 +404,6 @@
             </h2>
             <p class="closing-cta__copy">Tell us your theme, event date and idea.<br>We'll review your request and send you a custom quote.</p>
             <a class="closing-cta__button" href="https://docs.google.com/forms/d/e/1FAIpQLScoLGHIJ-0zX6YgYY72aCu_DUFqIfNjaMrX1rQ_hbqM1XWntA/viewform" target="_blank" rel="noopener noreferrer">
-              <span class="closing-cta__button-sparkle" aria-hidden="true"></span>
               Get My Custom Quote
               <span class="closing-cta__button-arrow" aria-hidden="true"></span>
             </a>
@@ -373,11 +420,19 @@
             <img class="faq__sparkle faq__sparkle--small-one" src="assets/images/icons/confetti/sparkle.svg" alt="">
             <img class="faq__sparkle faq__sparkle--small-two" src="assets/images/icons/confetti/sparkle.svg" alt="">
           </span>
+          <span class="faq__sparkle-group faq__sparkle-group--left faq__sparkle-group--desktop-confetti" aria-hidden="true">
+            <img class="faq__sparkle faq__sparkle--medium" src="assets/images/confetti/sparkle-4.svg" alt="" aria-hidden="true">
+            <img class="faq__sparkle faq__sparkle--small-one" src="assets/images/confetti/sparkle-diamond.svg" alt="" aria-hidden="true">
+          </span>
           <h2 class="faq__title" id="faq-title">Frequently Asked Questions</h2>
           <span class="faq__sparkle-group faq__sparkle-group--right" aria-hidden="true">
             <img class="faq__sparkle faq__sparkle--medium" src="assets/images/icons/confetti/sparkle.svg" alt="">
             <img class="faq__sparkle faq__sparkle--small-one" src="assets/images/icons/confetti/sparkle.svg" alt="">
             <img class="faq__sparkle faq__sparkle--small-two" src="assets/images/icons/confetti/sparkle.svg" alt="">
+          </span>
+          <span class="faq__sparkle-group faq__sparkle-group--right faq__sparkle-group--desktop-confetti" aria-hidden="true">
+            <img class="faq__sparkle faq__sparkle--medium" src="assets/images/confetti/sparkle-4.svg" alt="" aria-hidden="true">
+            <img class="faq__sparkle faq__sparkle--small-one" src="assets/images/confetti/sparkle-diamond.svg" alt="" aria-hidden="true">
           </span>
         </div>
 
@@ -469,18 +524,16 @@
   <div class="footer-divider" aria-hidden="true"></div>
   <footer class="site-footer" aria-labelledby="footer-brand-title">
     <div class="site-footer__body">
+      <div class="section-confetti section-confetti--footer" aria-hidden="true">
+        <img class="section-confetti__piece footer-confetti__dot-brand" src="assets/images/confetti/sparkle-diamond.svg" alt="" aria-hidden="true">
+        <img class="section-confetti__piece footer-confetti__diamond-brand" src="assets/images/confetti/sparkle-diamond.svg" alt="" aria-hidden="true">
+        <img class="section-confetti__piece footer-confetti__heart" src="assets/images/confetti/heart.svg" alt="" aria-hidden="true">
+        <img class="section-confetti__piece footer-confetti__loop" src="assets/images/confetti/curved-pill.svg" alt="" aria-hidden="true">
+        <img class="section-confetti__piece footer-confetti__dot-contact" src="assets/images/confetti/sparkle-4.svg" alt="" aria-hidden="true">
+        <img class="section-confetti__piece footer-confetti__pill-location" src="assets/images/confetti/curved-pill.svg" alt="" aria-hidden="true">
+        <img class="section-confetti__piece footer-confetti__diamond-location section-confetti__piece--desktop-extra" src="assets/images/confetti/sparkle-diamond.svg" alt="" aria-hidden="true">
+      </div>
       <div class="container">
-        <div class="site-footer__decor" aria-hidden="true">
-          <span class="site-footer__confetti site-footer__confetti--brand-sparkle"></span>
-          <span class="site-footer__confetti site-footer__confetti--brand-dot"></span>
-          <span class="site-footer__confetti site-footer__confetti--brand-diamond"></span>
-          <span class="site-footer__confetti site-footer__confetti--social-sparkle"></span>
-          <span class="site-footer__confetti site-footer__confetti--social-dot"></span>
-          <span class="site-footer__confetti site-footer__confetti--contact-diamond"></span>
-          <span class="site-footer__confetti site-footer__confetti--contact-streamer"></span>
-          <span class="site-footer__confetti site-footer__confetti--location-dot"></span>
-        </div>
-
         <div class="site-footer__grid">
           <section class="site-footer__brand">
             <img src="assets/images/logo/donkey-logo.png" alt="L.A. Pi&ntilde;atas donkey logo">
@@ -491,13 +544,13 @@
           <section class="site-footer__column" aria-labelledby="footer-social-title">
             <h2 id="footer-social-title">Follow Us</h2>
             <nav class="site-footer__socials" aria-label="Social media">
-              <a href="#" aria-label="Follow L.A. Pi&ntilde;atas on Instagram">
+              <a href="https://www.instagram.com/l.a.pinatas/" target="_blank" rel="noopener noreferrer" aria-label="Follow L.A. Pi&ntilde;atas on Instagram">
                 <img src="assets/images/icons/social/instagram.svg" alt="">
               </a>
-              <a href="#" aria-label="Follow L.A. Pi&ntilde;atas on TikTok">
+              <a href="https://www.tiktok.com/@l.a.pinatas" target="_blank" rel="noopener noreferrer" aria-label="Follow L.A. Pi&ntilde;atas on TikTok">
                 <img src="assets/images/icons/social/tiktok.svg" alt="">
               </a>
-              <a href="#" aria-label="Watch L.A. Pi&ntilde;atas on YouTube">
+              <a href="https://www.youtube.com/@L.A.Pinatas" target="_blank" rel="noopener noreferrer" aria-label="Watch L.A. Pi&ntilde;atas on YouTube">
                 <img src="assets/images/icons/social/youtube.svg" alt="">
               </a>
             </nav>
@@ -507,8 +560,7 @@
             <h2 id="footer-contact-title">Contact Us</h2>
             <ul class="site-footer__contact-list">
               <li><span class="site-footer__contact-mark" aria-hidden="true">&#9742;</span><a href="tel:+13109913827">(310) 991-3827</a></li>
-              <li><span class="site-footer__contact-mark" aria-hidden="true">&#9993;</span><a href="mailto:L.A.Pinatas.info@gmail.com">L.A.Pinatas.info@gmail.com</a></li>
-              <li><span class="site-footer__contact-mark" aria-hidden="true">@</span><a href="#">@L.A.Pinatas</a></li>
+              <li><span class="site-footer__contact-mark site-footer__contact-mark--email" aria-hidden="true"><span class="site-footer__contact-email-legacy">&#9993;</span><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg></span><a href="mailto:L.A.Pinatas.info@gmail.com">L.A.Pinatas.info@gmail.com</a></li>
             </ul>
           </section>
 
