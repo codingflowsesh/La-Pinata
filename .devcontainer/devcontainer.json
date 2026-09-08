@@ -1,0 +1,11 @@
+{
+  "name": "LA Pinata Codespace",
+  "forwardPorts": [5500],
+  "portsAttributes": {
+    "5500": {
+      "label": "LA Pinata Preview",
+      "onAutoForward": "openPreview"
+    }
+  },
+  "postAttachCommand": "cd /workspaces/La-Pinata && (pgrep -f 'python3 -m http.server 5500' >/dev/null || (nohup python3 -m http.server 5500 >/tmp/la-pinata-preview.log 2>&1 &))"
+}
