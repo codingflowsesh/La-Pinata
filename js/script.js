@@ -77,6 +77,302 @@ if (menuButton && mobileMenu) {
 }
 
 // ==============================
+// Full Gallery Modal
+// ==============================
+function trackGalleryOpen(galleryName) {
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: "gallery_open",
+    gallery_name: galleryName
+  });
+}
+
+var galleryProjects = [];
+const openFullGalleryButton = document.querySelector(".js-open-full-gallery");
+const fullGalleryModal = document.querySelector("#full-gallery-modal");
+const fullGalleryBackdrop = fullGalleryModal?.querySelector(".full-gallery-backdrop");
+const fullGalleryCloseButton = fullGalleryModal?.querySelector(".full-gallery-close");
+const fullGalleryGrid = document.querySelector("#full-gallery-grid");
+const fullGalleryLightbox = document.querySelector("#full-gallery-lightbox");
+const fullGalleryLightboxTitle = document.querySelector("#full-gallery-lightbox-title");
+const fullGalleryLightboxMedia = document.querySelector("#full-gallery-lightbox-media");
+const fullGalleryLightboxClose = fullGalleryModal?.querySelector(".full-gallery-lightbox__close");
+const fullGalleryLightboxPrevious = fullGalleryModal?.querySelector(".full-gallery-arrow--previous");
+const fullGalleryLightboxNext = fullGalleryModal?.querySelector(".full-gallery-arrow--next");
+const fullGalleryLightboxPagination = document.querySelector("#full-gallery-lightbox-pagination");
+const fullGalleryLightboxCounter = document.querySelector("#full-gallery-lightbox-counter");
+const fullGalleryLightboxStatus = document.querySelector("#full-gallery-lightbox-status");
+const fullGalleryLightboxBack = document.querySelector(".full-gallery-lightbox__back");
+
+if (
+  openFullGalleryButton &&
+  fullGalleryModal &&
+  fullGalleryBackdrop &&
+  fullGalleryCloseButton &&
+  fullGalleryGrid &&
+  fullGalleryLightbox &&
+  fullGalleryLightboxTitle &&
+  fullGalleryLightboxMedia &&
+  fullGalleryLightboxClose &&
+  fullGalleryLightboxPrevious &&
+  fullGalleryLightboxNext &&
+  fullGalleryLightboxPagination &&
+  fullGalleryLightboxCounter &&
+  fullGalleryLightboxStatus &&
+  fullGalleryLightboxBack
+) {
+  let fullGalleryItems = galleryProjects.flatMap((project) => project.media.map((mediaItem) => ({
+    ...mediaItem,
+    projectId: project.id,
+    projectTitle: project.title,
+    alt: mediaItem.alt || `${project.title} piÃ±ata video`
+  })));
+  const fullGalleryReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let activeFullGalleryIndex = 0;
+  let activeFullGalleryTrigger = null;
+
+  function stopFullGalleryVideos() {
+    fullGalleryModal.querySelectorAll("video").forEach((video) => {
+      video.pause();
+      try {
+        video.currentTime = 0;
+      } catch (error) {
+        // The media may not have loaded metadata yet.
+      }
+    });
+  }
+
+  function renderFullGalleryGrid() {
+    const fragment = document.createDocumentFragment();
+
+    fullGalleryItems.forEach((item, index) => {
+      const button = document.createElement("button");
+      button.className = `full-gallery-item${item.type === "video" ? " full-gallery-item--video" : ""}`;
+      button.type = "button";
+      button.setAttribute("aria-label", `Open ${item.projectTitle} gallery item`);
+
+      if (item.type === "video") {
+        const video = document.createElement("video");
+        video.src = item.src;
+        video.muted = true;
+        video.defaultMuted = true;
+        video.playsInline = true;
+        video.preload = "metadata";
+        video.setAttribute("muted", "");
+        video.setAttribute("playsinline", "");
+        video.setAttribute("aria-label", item.alt);
+        button.appendChild(video);
+
+        const badge = document.createElement("span");
+        badge.className = "full-gallery-play-badge";
+        badge.setAttribute("aria-hidden", "true");
+        badge.textContent = "â–¶";
+        button.appendChild(badge);
+        badge.textContent = "\u25B6";
+      } else {
+        const image = document.createElement("img");
+        image.src = item.src;
+        image.alt = item.alt;
+        image.loading = "lazy";
+        image.decoding = "async";
+        button.appendChild(image);
+      }
+
+      button.addEventListener("click", () => {
+        activeFullGalleryTrigger = button;
+        openFullGalleryLightbox(index);
+      });
+      fragment.appendChild(button);
+    });
+
+    fullGalleryGrid.replaceChildren(fragment);
+  }
+
+  function updateFullGalleryLightboxPagination() {
+    fullGalleryLightboxPagination.querySelectorAll("span").forEach((dot, index) => {
+      dot.classList.toggle("is-active", index === activeFullGalleryIndex);
+    });
+    fullGalleryLightboxStatus.textContent = `${fullGalleryItems[activeFullGalleryIndex].projectTitle}: ${activeFullGalleryIndex + 1} of ${fullGalleryItems.length}`;
+    fullGalleryLightboxCounter.textContent = `${activeFullGalleryIndex + 1} / ${fullGalleryItems.length}`;
+  }
+
+  function showFullGalleryItem(index) {
+    if (!fullGalleryItems.length) {
+      return;
+    }
+
+    activeFullGalleryIndex = (index + fullGalleryItems.length) % fullGalleryItems.length;
+    const item = fullGalleryItems[activeFullGalleryIndex];
+
+    stopFullGalleryVideos();
+    fullGalleryLightboxMedia.replaceChildren();
+    fullGalleryLightboxTitle.textContent = item.projectTitle;
+
+    if (item.type === "video") {
+      const video = document.createElement("video");
+      video.src = item.src;
+      video.controls = true;
+      video.muted = true;
+      video.defaultMuted = true;
+      video.autoplay = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      video.setAttribute("muted", "");
+      video.setAttribute("playsinline", "");
+      video.setAttribute("aria-label", item.alt);
+      fullGalleryLightboxMedia.appendChild(video);
+
+      if (!fullGalleryReducedMotion.matches) {
+        video.play().catch(() => {});
+      }
+    } else {
+      const image = document.createElement("img");
+      image.src = item.src;
+      image.alt = item.alt;
+      fullGalleryLightboxMedia.appendChild(image);
+    }
+
+    updateFullGalleryLightboxPagination();
+  }
+
+  function openFullGalleryLightbox(index) {
+    activeFullGalleryIndex = index;
+    fullGalleryGrid.hidden = true;
+    fullGalleryLightbox.hidden = false;
+    fullGalleryLightbox.setAttribute("aria-hidden", "false");
+    document.body.classList.add("is-lightbox-open");
+    showFullGalleryItem(activeFullGalleryIndex);
+    fullGalleryLightboxClose.focus({ preventScroll: true });
+  }
+
+  function closeFullGalleryLightbox() {
+    stopFullGalleryVideos();
+    fullGalleryLightboxMedia.replaceChildren();
+    fullGalleryLightbox.hidden = true;
+    fullGalleryLightbox.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("is-lightbox-open");
+    fullGalleryGrid.hidden = false;
+
+    if (activeFullGalleryTrigger) {
+      activeFullGalleryTrigger.focus({ preventScroll: true });
+    }
+  }
+
+  function goToNextFullGalleryItem() {
+    showFullGalleryItem(activeFullGalleryIndex + 1);
+  }
+
+  function goToPreviousFullGalleryItem() {
+    showFullGalleryItem(activeFullGalleryIndex - 1);
+  }
+
+  // Descriptive aliases for the full-gallery lightbox controls.
+  function renderFullGalleryLightboxItem(index) {
+    showFullGalleryItem(index);
+  }
+
+  function nextFullGalleryItem() {
+    goToNextFullGalleryItem();
+  }
+
+  function previousFullGalleryItem() {
+    goToPreviousFullGalleryItem();
+  }
+
+  function stopFullGalleryLightboxVideos() {
+    stopFullGalleryVideos();
+  }
+
+  function openFullGalleryModal() {
+    fullGalleryItems = [
+      ...galleryProjects.flatMap((project) => project.media.map((mediaItem) => ({
+        ...mediaItem,
+        projectId: project.id,
+        projectTitle: project.title,
+        alt: mediaItem.alt || `${project.title} gallery video`
+      }))),
+      {
+        type: "video",
+        src: "assets/videos/beiber-video.mp4",
+        projectTitle: "Beiber",
+        alt: "Beiber piÃ±ata video"
+      },
+      {
+        type: "video",
+        src: "assets/videos/jaguar-video.mp4",
+        projectTitle: "Jaguar",
+        alt: "Jaguar piÃ±ata video"
+      }
+    ].filter((item) => item.src);
+    fullGalleryLightboxPagination.replaceChildren();
+    fullGalleryItems.forEach(() => {
+      const dot = document.createElement("span");
+      dot.className = "full-gallery-lightbox__dot";
+      dot.setAttribute("aria-hidden", "true");
+      fullGalleryLightboxPagination.appendChild(dot);
+    });
+    renderFullGalleryGrid();
+    closeFullGalleryLightbox();
+    fullGalleryModal.hidden = false;
+    fullGalleryModal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("is-full-gallery-open");
+    trackGalleryOpen("Full Gallery");
+    fullGalleryCloseButton.focus();
+  }
+
+  function closeFullGalleryModal() {
+    stopFullGalleryVideos();
+    fullGalleryLightboxMedia.replaceChildren();
+    fullGalleryModal.hidden = true;
+    fullGalleryModal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("is-full-gallery-open");
+    document.body.classList.remove("is-lightbox-open");
+    openFullGalleryButton.focus({ preventScroll: true });
+  }
+
+  for (let index = 0; index < fullGalleryItems.length; index += 1) {
+    const dot = document.createElement("span");
+    dot.className = "full-gallery-lightbox__dot";
+    dot.setAttribute("aria-hidden", "true");
+    fullGalleryLightboxPagination.appendChild(dot);
+  }
+
+  openFullGalleryButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    openFullGalleryModal();
+  });
+
+  fullGalleryCloseButton.addEventListener("click", closeFullGalleryModal);
+  fullGalleryBackdrop.addEventListener("click", closeFullGalleryModal);
+  fullGalleryLightboxClose.addEventListener("click", closeFullGalleryLightbox);
+  fullGalleryLightboxPrevious.addEventListener("click", goToPreviousFullGalleryItem);
+  fullGalleryLightboxNext.addEventListener("click", goToNextFullGalleryItem);
+  fullGalleryLightboxBack.addEventListener("click", closeFullGalleryLightbox);
+  fullGalleryLightbox.addEventListener("click", (event) => {
+    if (event.target === fullGalleryLightbox || event.target === fullGalleryLightboxMedia) {
+      closeFullGalleryLightbox();
+    }
+  });
+
+  fullGalleryModal.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      event.preventDefault();
+      if (!fullGalleryLightbox.hidden) {
+        closeFullGalleryLightbox();
+      } else {
+        closeFullGalleryModal();
+      }
+    } else if (!fullGalleryLightbox.hidden && event.key === "ArrowLeft") {
+      event.preventDefault();
+      goToPreviousFullGalleryItem();
+    } else if (!fullGalleryLightbox.hidden && event.key === "ArrowRight") {
+      event.preventDefault();
+      goToNextFullGalleryItem();
+    }
+  });
+}
+
+// ==============================
 // FAQ Accordion
 // ==============================
 const faqButtons = document.querySelectorAll(".faq__question");
@@ -135,14 +431,14 @@ faqButtons.forEach((button) => {
 // ==============================
 // Mobile Gallery
 // ==============================
-const galleryProjects = [
+galleryProjects = [
   {
     id: "caterpillar",
     title: "Caterpillar",
     cover: "assets/images/trans-img/caterpillar-1.webp",
     media: [
+      { type: "video", src: "assets/videos/caterpiller-video.mp4", alt: "Caterpillar piñata video" },
       { type: "image", src: "assets/images/gallery/caterpillar-1-resized.webp", alt: "Caterpillar piñata gallery photo" },
-      { type: "video", src: "assets/videos/caterpiller-video.mp4" }
     ]
   },
   {
@@ -175,8 +471,8 @@ const galleryProjects = [
     title: "Blue Fish",
     cover: "assets/images/trans-img/blue-fish.webp",
     media: [
+      { type: "video", src: "assets/videos/blue-fish-video.mp4", alt: "Blue fish piñata video" },
       { type: "image", src: "assets/images/gallery/blue-fish-resized.webp", alt: "Blue fish piñata gallery photo" },
-      { type: "video", src: "assets/videos/blue-fish-video.mp4" }
     ]
   },
   {
@@ -201,19 +497,19 @@ const galleryProjects = [
     title: "Hello Kitty",
     cover: "assets/images/trans-img/hello-kitty.webp",
     media: [
+      { type: "video", src: "assets/videos/hello-kitty-video.mp4", alt: "Hello Kitty piñata video" },
       { type: "image", src: "assets/images/gallery/hello-kitty-resized.webp", alt: "Hello Kitty piñata gallery photo" },
-      { type: "video", src: "assets/videos/hello-kitty-video.mp4" }
     ]
   },
   {
     id: "joshua",
-    title: "Joshua Birthday Set",
+    title: "Sports Theme Set",
     cover: "assets/images/trans-img/joshua-combo.webp",
     media: [
+      { type: "video", src: "assets/videos/joshua-ball-video.mp4", alt: "Joshua football piñata video" },
       { type: "image", src: "assets/images/gallery/joshua-1-resized.webp", alt: "Joshua number one piñata gallery photo" },
       { type: "image", src: "assets/images/gallery/joshua-football-resized.webp", alt: "Joshua football piñata gallery photo" },
       { type: "image", src: "assets/images/gallery/joshua-resized.webp", alt: "Number one and football piñata set gallery photo" },
-      { type: "video", src: "assets/videos/joshua-ball-video.mp4" }
     ]
   },
   {
@@ -229,8 +525,8 @@ const galleryProjects = [
     title: "Miss Rachel",
     cover: "assets/images/trans-img/miss-racheal.webp",
     media: [
+      { type: "video", src: "assets/videos/ms-racheal.mp4", alt: "Miss Rachel piñata video" },
       { type: "image", src: "assets/images/gallery/miss-racheal-resized.webp", alt: "Miss Rachel birthday piñata gallery photo" },
-      { type: "video", src: "assets/videos/ms-racheal.mp4" }
     ]
   },
   {
@@ -246,9 +542,9 @@ const galleryProjects = [
     title: "Party Guy",
     cover: "assets/images/trans-img/party-guy.webp",
     media: [
+      { type: "video", src: "assets/videos/party-guy-video.mp4", alt: "Party guy piñata video" },
+      { type: "video", src: "assets/videos/party-guy-2-video.mp4", alt: "Party guy piñata video" },
       { type: "image", src: "assets/images/gallery/party-guy-resized.webp", alt: "Party guy piñata gallery photo" },
-      { type: "video", src: "assets/videos/party-guy-video.mp4" },
-      { type: "video", src: "assets/videos/party-guy-2-video.mp4" }
     ]
   },
   {
@@ -256,8 +552,8 @@ const galleryProjects = [
     title: "Pigeon",
     cover: "assets/images/trans-img/pigeon.webp",
     media: [
+      { type: "video", src: "assets/videos/pigeon-video.mp4", alt: "Pigeon piñata video" },
       { type: "image", src: "assets/images/gallery/pigeon-resized.png", alt: "Pigeon piñata gallery photo" },
-      { type: "video", src: "assets/videos/pigeon-video.mp4" }
     ]
   },
   {
@@ -273,8 +569,8 @@ const galleryProjects = [
     title: "Pink Star",
     cover: "assets/images/trans-img/pink-star.webp",
     media: [
+      { type: "video", src: "assets/videos/star-video.mp4", alt: "Pink star piñata video" },
       { type: "image", src: "assets/images/gallery/pink-star-resized.webp", alt: "Pink star piñata gallery photo" },
-      { type: "video", src: "assets/videos/star-video.mp4" }
     ]
   }
 ];
@@ -611,6 +907,7 @@ if (
     mobileGalleryModalHint.hidden = projectMedia.length < 2;
     mobileGalleryModal.hidden = false;
     document.body.classList.add("mobile-gallery-open");
+    trackGalleryOpen(project.title);
     mobileGalleryModalTrack.scrollLeft = 0;
     updateModalPagination();
     mobileGalleryModalClose.focus();
