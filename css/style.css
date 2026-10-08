@@ -8639,6 +8639,46 @@ body.is-lightbox-open {
   display: none;
 }
 
+/* One full-screen gallery overlay, shared across desktop, tablet, and mobile. */
+.full-gallery-modal:not([hidden]) {
+  padding: 0;
+  place-items: stretch;
+  background: linear-gradient(145deg, #fffdfd 0%, #f7efff 52%, #fff4fb 100%);
+}
+
+.full-gallery-backdrop {
+  display: none;
+}
+
+.full-gallery-panel {
+  width: 100%;
+  height: 100dvh;
+  max-height: none;
+  padding: clamp(72px, 8vw, 108px) clamp(20px, 5vw, 76px) clamp(28px, 5vw, 64px);
+  box-sizing: border-box;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.full-gallery-header h2 {
+  text-transform: uppercase;
+}
+
+.full-gallery-close {
+  top: clamp(18px, 3vw, 32px);
+  right: clamp(18px, 3vw, 32px);
+  width: 50px;
+  height: 50px;
+}
+
+@media (max-width: 1199px) {
+  .full-gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 /* Mobile uses a compact item counter instead of a long, crowded dot row. */
 @media (max-width: 767px) {
   .full-gallery-lightbox:not([hidden]) {
