@@ -79,14 +79,6 @@ if (menuButton && mobileMenu) {
 // ==============================
 // Full Gallery Modal
 // ==============================
-function trackGalleryOpen(galleryName) {
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({
-    event: "gallery_open",
-    gallery_name: galleryName
-  });
-}
-
 var galleryProjects = [];
 const openFullGalleryButton = document.querySelector(".js-open-full-gallery");
 const fullGalleryModal = document.querySelector("#full-gallery-modal");
@@ -316,7 +308,6 @@ if (
     fullGalleryModal.hidden = false;
     fullGalleryModal.setAttribute("aria-hidden", "false");
     document.body.classList.add("is-full-gallery-open");
-    trackGalleryOpen("Full Gallery");
     fullGalleryCloseButton.focus();
   }
 
@@ -647,6 +638,7 @@ if (
 
       card.className = `gallery-showcase__card gallery-showcase__card--${theme}`;
       card.dataset.galleryProject = project.id;
+      card.dataset.gtmGalleryOpen = "true";
 
       if (project.id === "jasmine") {
         card.classList.add("gallery-showcase__card--jasmine");
@@ -907,7 +899,6 @@ if (
     mobileGalleryModalHint.hidden = projectMedia.length < 2;
     mobileGalleryModal.hidden = false;
     document.body.classList.add("mobile-gallery-open");
-    trackGalleryOpen(project.title);
     mobileGalleryModalTrack.scrollLeft = 0;
     updateModalPagination();
     mobileGalleryModalClose.focus();
